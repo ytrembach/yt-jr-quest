@@ -2,7 +2,6 @@ package org.yt.jr.quest.model;
 
 import lombok.Getter;
 import lombok.Setter;
-import org.yt.jr.quest.service.KnownGames;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -23,12 +22,6 @@ public class Game {
 
     public void addLocation(final Node loc) {
         nodes.add(loc);
-    }
-
-    public Optional<Node> getLocationByName(final String name) {
-        return nodes.stream()
-                .filter(l-> l.getName().equals(name))
-                .findFirst();
     }
 
     // default game
