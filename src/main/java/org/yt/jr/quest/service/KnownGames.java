@@ -9,7 +9,7 @@ import static org.yt.jr.quest.model.Game.DEFAULT_GAME;
 import static org.yt.jr.quest.model.Game.DEFAULT_GAME_NAME;
 
 public class KnownGames {
-    private static Map<String, Game> knownGamesMap = new HashMap<>();
+    private final static Map<String, Game> knownGamesMap = new HashMap<>();
 
     private static KnownGames instance;
 

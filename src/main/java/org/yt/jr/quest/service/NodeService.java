@@ -16,7 +16,7 @@ public class NodeService {
             prepareStartNode(req, player, game);
         } else {
             final Node node = KnownGames.getInstance().findNode(game, UUID.fromString(nodeParam)).orElseThrow();
-            prepareNormalNode(req, player, game, node);
+            prepareNormalNode(req, game, node);
         }
     }
 
@@ -28,7 +28,7 @@ public class NodeService {
     }
 
     @SneakyThrows
-    private static void prepareNormalNode(final HttpServletRequest req, final String player,
+    private static void prepareNormalNode(final HttpServletRequest req,
                                           final Game game, final Node node) {
         req.setAttribute("gameTitle", game.getTitle());
         req.setAttribute("node", node);
