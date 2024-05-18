@@ -35,7 +35,7 @@ public class MainServlet extends HttpServlet {
         final PrintWriter writer = resp.getWriter();
         final HttpSession session = req.getSession();
 
-        getErrorMessage(session).ifPresent(msg -> writer.print(msg));
+        getErrorMessage(session).ifPresent(writer::print);
 
         checkSessionPlayer(req, resp, session);
         final String player = (String) req.getAttribute("player");
