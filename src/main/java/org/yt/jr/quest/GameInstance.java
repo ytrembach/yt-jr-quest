@@ -2,6 +2,7 @@ package org.yt.jr.quest;
 
 import lombok.Getter;
 import lombok.Setter;
+import org.yt.jr.quest.model.Answer;
 import org.yt.jr.quest.model.Game;
 import org.yt.jr.quest.model.Node;
 import java.time.LocalTime;
@@ -32,7 +33,7 @@ public class GameInstance {
 
         if (findNewNode.isEmpty() ||
                 currentNode.getQuestion().getAnswers().stream()
-                .map(answer -> answer.getNextNode())
+                .map(Answer::getNextNode)
                 .noneMatch(node -> newNodeId.equals(node.getId()))) {
             return Optional.empty();
         }
