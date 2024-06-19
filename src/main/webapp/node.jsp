@@ -1,19 +1,25 @@
+<%@ page import="org.yt.jr.quest.ActiveGames" %>
+<%@ page import="org.yt.jr.quest.GameInstance" %>
 <%@ page import="org.yt.jr.quest.model.Node" %>
 <%@ page import="org.yt.jr.quest.model.Question" %>
 <%@ page import="org.yt.jr.quest.model.Answer" %>
 <%@ page import="java.util.List" %>
 
 <%
-            final Node node = (Node) request.getAttribute("node");
+            final String player = (String) session.getAttribute("player");
+            final GameInstance gameInstance = ActiveGames.ACTIVE_GAMES.findGame(player).get();
+            final String gameTitle = gameInstance.getGame().getTitle();
+
+            final Node node = gameInstance.getCurrentNode();
             final Question question = node.getQuestion();
 %>
 
 <%@ include file="header.jsp" %>
 
 <div id="welcome" class="block">
-    Dear <b><%= request.getAttribute("player") %></b>
+    Dear <b><%= player %></b>
     <br>
-    You are playing <b><%= request.getAttribute("gameTitle") %></b>
+    You are playing <b><%= gameTitle %></b>
 </div>
 
 <div id="banner" class="block">
