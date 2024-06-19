@@ -12,11 +12,11 @@ public class Question {
     final private String question;
     final private List<Answer> answers = new ArrayList<>();
 
-    public Question(String question) {
+    public Question(final String question) {
         this.question = question;
     }
 
-    public Question addAnswer(Answer answer) {
+    public Question addAnswer(final Answer answer) {
         answers.add(answer);
         return this;
     }
