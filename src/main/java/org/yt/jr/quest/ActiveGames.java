@@ -1,20 +1,19 @@
-package org.yt.jr.quest.service;
+package org.yt.jr.quest;
 
 import lombok.Getter;
 import org.yt.jr.quest.model.Game;
-import org.yt.jr.quest.model.GameInstance;
 
 import java.time.LocalTime;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Optional;
+import java.util.stream.Collectors;
 
 @Getter
 public class ActiveGames {
+    final public static long GAME_INSTANCE_IDLE_TIME = 30; // minutes
 
     final public static ActiveGames ACTIVE_GAMES = new ActiveGames();
-
-    final public static long GAME_INSTANCE_IDLE_TIME = 30; // minutes
 
     private List<GameInstance> activeGamesList = new ArrayList<>();
 
@@ -34,7 +33,7 @@ public class ActiveGames {
         if (!activeGamesList.isEmpty() && activeGamesList.get(0).getTimestamp().isBefore(now.minusMinutes(minutes))) {
             activeGamesList = activeGamesList.stream()
                     .filter(g -> g.getTimestamp().isBefore(now.minusMinutes(minutes)))
-                    .toList();
+                    .collect(Collectors.toCollection(ArrayList::new));
         }
     }
 }
