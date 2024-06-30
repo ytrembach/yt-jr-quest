@@ -9,7 +9,7 @@ import java.util.UUID;
 @Getter
 @ToString
 public class Node {
-    final private UUID id = UUID.randomUUID();;
+    final private UUID id = UUID.randomUUID();
 
     final private String name;
 
