@@ -15,10 +15,10 @@ import org.yt.jr.quest.GameInstance;
 import org.yt.jr.quest.ActiveGames;
 import org.yt.jr.quest.KnownGames;
 
-@WebServlet(urlPatterns = "/main")
+@WebServlet(urlPatterns = { "/", "/main" })
 public class QuestServlet extends HttpServlet {
     public final static String URL = "/quest/main";
-    private final static String LOGIN_JSP = "/login.jsp";
+    private final static String LOGIN_JSP = "/quest/login.jsp";
     private final static String SELECT_GAME_JSP = "/select-game.jsp";
     private final static String NODE_JSP = "/node.jsp";
 
@@ -79,12 +79,18 @@ public class QuestServlet extends HttpServlet {
         getErrorMessage(session).ifPresent(writer::print);
 
         final String player = getPlayer(req, resp, session);
-        final GameInstance gameInstance = getGameInstance(req, resp, session, player);
-        final String nextNode = req.getParameter("node");
-        if (nextNode != null) {
-            gameInstance.changeNode(nextNode);
+        if (player.isEmpty()) {
+            return;
+        }
+        final Optional<GameInstance> gameInstance = getGameInstance(req, resp, session, player);
+        if (gameInstance.isEmpty()) {
+            return;
         }
 
+        final String nextNode = req.getParameter("node");
+        if (nextNode != null) {
+            gameInstance.get().changeNode(nextNode);
+        }
         req.getRequestDispatcher(NODE_JSP).forward(req, resp);
     }
 
@@ -95,21 +101,22 @@ public class QuestServlet extends HttpServlet {
         final String player = Objects.requireNonNullElse((String) session.getAttribute("player"), "");
         if (player.isEmpty()) {
             redirectWithError(session, resp, LOGIN_JSP, "You have to login");
+        } else {
+            req.setAttribute("player", player);
         }
-        req.setAttribute("player", player);
         return player;
     }
 
-    private GameInstance getGameInstance(
+    private Optional<GameInstance> getGameInstance(
             final HttpServletRequest req,
             final HttpServletResponse resp,
             final HttpSession session,
             final String player) {
         final Optional<GameInstance> lastGameInstance = ActiveGames.ACTIVE_GAMES.findGame(player);
         if (lastGameInstance.isEmpty()) {
-            redirectWithError(session, resp, LOGIN_JSP, "You have to select the game");
+            redirectWithError(session, resp, SELECT_GAME_JSP, "You have to select the game");
         }
-        return lastGameInstance.get();
+        return lastGameInstance;
     }
 
     //
