@@ -9,11 +9,12 @@ import java.util.List;
 @Getter
 @ToString
 public class Question {
-    final private String question;
+    final private String questionText;
+
     final private List<Answer> answers = new ArrayList<>();
 
-    public Question(final String question) {
-        this.question = question;
+    public Question(final String questionText) {
+        this.questionText = questionText;
     }
 
     public Question addAnswer(final Answer answer) {
