@@ -13,6 +13,14 @@
             padding: 5px;
             text-align: left;
         }
+        .message {
+                    width: 300px;
+                    border: solid 1px black;
+                    left: 10px;
+                    padding: 5px;
+                    text-align: left;
+                    color: green
+                }
         .err_block {
                     width: 300px;
                     border: solid 1px black;
