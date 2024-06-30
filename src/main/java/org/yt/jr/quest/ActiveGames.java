@@ -21,6 +21,10 @@ public class ActiveGames {
         activeGamesList.add(new GameInstance(player, game));
     }
 
+    public void finishGame(final GameInstance gameInstance) {
+        activeGamesList.remove(gameInstance);
+    }
+
     public Optional<GameInstance> findGame(final String player) {
         return activeGamesList.stream()
                 .filter(g -> g.getPlayer().equals(player))
@@ -30,7 +34,10 @@ public class ActiveGames {
 
     public void purgeActiveGamesList(final long minutes) {
         final LocalTime now = LocalTime.now();
-        if (!activeGamesList.isEmpty() && activeGamesList.get(0).getTimestamp().isBefore(now.minusMinutes(minutes))) {
+        if (!activeGamesList.isEmpty() &&
+                activeGamesList.get(0)
+                        .getTimestamp()
+                        .isBefore(now.minusMinutes(minutes))) {
             activeGamesList = activeGamesList.stream()
                     .filter(g -> g.getTimestamp().isBefore(now.minusMinutes(minutes)))
                     .collect(Collectors.toCollection(ArrayList::new));
