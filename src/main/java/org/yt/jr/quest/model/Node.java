@@ -9,7 +9,7 @@ import java.util.UUID;
 @Getter
 @ToString
 public class Node {
-    final private UUID id;
+    final private UUID id = UUID.randomUUID();;
 
     final private String name;
 
@@ -20,8 +20,7 @@ public class Node {
     @Setter
     private Question question;
 
-    public Node(String name, String banner, boolean isFinal) {
-        this.id = UUID.randomUUID();
+    public Node(final String name, final String banner, final boolean isFinal) {
         this.name = name;
         this.banner = banner;
         this.isFinal = isFinal;
