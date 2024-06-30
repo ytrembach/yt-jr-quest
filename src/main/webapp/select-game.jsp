@@ -21,6 +21,14 @@
         </select>
         <button type="submit">Go!</button>
     </form>
+
+    or load your own:
+
+    <form method="post" enctype="multipart/form-data" action="/quest/load">
+        <input id="gamejson" name="gamejson" type="file" />
+        <button type="submit">Go!</button>
+    </form>
+
 </div>
 
 <%@ include file="footer.jsp" %>
