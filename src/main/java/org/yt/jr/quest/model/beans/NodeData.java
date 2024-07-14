@@ -1,4 +1,4 @@
-package org.yt.jr.quest.model.gson;
+package org.yt.jr.quest.model.beans;
 
 import com.google.gson.annotations.SerializedName;
 import lombok.AllArgsConstructor;
