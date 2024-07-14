@@ -6,7 +6,7 @@ import org.yt.jr.quest.model.Game;
 import java.util.*;
 
 public class KnownGames {
-    private final static Map<String, Game> knownGamesMap = new HashMap<>();
+    private final Map<String, Game> knownGamesMap = new HashMap<>();
 
     private static KnownGames instance;
 
