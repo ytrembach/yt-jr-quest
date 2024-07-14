@@ -1,0 +1,257 @@
+{ 
+	"title": "One Ring",
+	"intro": "The fate of Middle-earth hangs in the balance. The One Ring, source of Sauron's power, must be destroyed. You, a brave adventurer, have chosen to answer the call. Where will your journey begin? Choose wisely, for each path holds its own challenges and rewards.",
+	"nodes" : 
+
+	[
+		{
+			"name": "Prancing Pony",
+			"isfinal" : false,
+			"banner": "Barliman Butterbur, the innkeeper ask you:",
+			"question": "Welcome, weary traveler! Rumors abound these days. What path stirs your heart?",
+			"answers": [
+				{ 
+					"answer" : "I seek the wisdom of Elrond.",
+					"next" : "Rivendell" 
+				},
+				{
+					"answer" : "A visit to the Hobbits is long overdue.",
+					"next" : "The Shire"
+				},
+				{
+					"answer" : "The Dark Lord's domain beckons the brave!",
+					"message" : "Barliman raises an eyebrow. 'Mordor? Even the bravest wouldn't venture there unprepared. A drink perhaps? To clear your head and choose a safer path",
+					"next" : "Bree"
+				}
+			]
+		},
+
+		{
+			"name": "Rivendell",
+			"isfinal" : false,
+			"banner": "Elrond, the Elf Lord glad to see you:",
+			"question": "A familiar face graces Rivendell once more. What brings you to our Elven haven?", 
+			"answers": [
+				{
+					"answer" : "The Hobbits must be warned of the growing darkness.",
+					"next" : "Bree"
+				},
+				{
+					"answer" : "I bear news for the Fellowship of the Ring.",
+					"next" : "The Shire"
+				},
+				{
+					"answer" : "Moria - The quickest route to Mordor lies through the mines.",
+					"message" : "Elrond's face hardens. 'Moria is a perilous path, even for the most seasoned traveler. The Fellowship needs a more secure route. Tell me, what news do you bring?'",
+					"next" : "Prancing Pony"
+				}
+			]
+		},
+
+		{
+			"name": "The Shire",
+			"isfinal" : false,
+			"banner": "Frodo Baggins, the hobbit meet you:",
+			"question": "Well met, friend! What news do you bring from the outside world?",
+			"answers": [
+				{
+					"answer" : "Bill the ponyherder might have news of Gandalf.",
+					"next" : "Prancing Pony"
+				},
+				{
+					"answer" : "The One Ring must be destroyed!",
+					"next" : "Bree"
+				},
+				{
+					"answer" : "Mordor! - We should destroy the ring as soon as possible!",
+					"message" : "Frodo recoils in horror. 'Mordor! That foul land! We cannot face such evil alone. There must be another way.",
+					"next" : "Rivendell"
+				}
+			]
+		},
+
+		{
+			"name": "Bree",
+			"isfinal" : false,
+			"banner": "Barliman Butterbur tells you:",
+			"question": "Greetings traveler! What brings you to the prancing Pony in Bree?",
+			"answers": [
+				{ 
+					"answer" : "The Hobbits hold the key to defeating Sauron.",
+					"next" : "The Shire" 
+				},
+				{
+					"answer" : "Elrond's counsel is needed in these troubled times.",
+					"next" : "Rivendell"
+				},
+				{
+					"answer" : "I seek Gandalf the Grey. Have you seen him?",
+					"next" : "Gandalf's Last Stand"
+				},
+				{
+					"answer" : "The One Ring must be destroyed at all costs!",
+					"message" : "Barliman looks at you with concern. 'Mordor?  A noble quest, but a perilous one.  Perhaps you should seek Gandalf's wisdom before venturing there.'",
+					"next" : "Prancing Pony"
+				}
+			]
+		},
+
+		{
+			"name": "Gandalf's Last Stand",
+			"isfinal" : false,
+			"banner": "Aragorn, son of Arathorn, invites you:",
+			"question": "A stranger arrives at the site of Gandalf's battle. What brings you here?",
+			"answers": [
+				{ 
+					"answer" : "Barliman at the Prancing Pony might have news.",
+					"next" : "Prancing Pony" 
+				},
+				{
+					"answer" : "We must find way through Moria to reach Mordor",
+					"message" : "Aragorn shakes his head grimly. 'Moria is too dangerous now. We need a different plan. Tell me, why do you believe a fellowship is the answer?",
+					"next" : "Bree"
+				},
+				{
+					"answer" : "I seek news of Gandalf the Grey.",
+					"next" : "Lothlorien"
+				},
+				{
+					"answer" : "The Fellowship needs to be formed to destroy the One Ring",
+					"next" : "Rivendell"
+				}
+			]
+		},
+
+		{
+			"name": "Lothlorien",
+			"isfinal" : false,
+			"banner": "Galadriel, the Lady of the Woods looks at you:",
+			"question": "Tell me, traveler, what burdens your heart as you enter Lothlorien?",
+			"answers": [
+				{ 
+					"answer" : "Aragorn might have news of the Fellowship",
+					"next" : "Gandalf's Last Stand" 
+				},
+				{
+					"answer" : "The quickest path to Mordor lies through the mines of Moria.",
+					"message" : "Galadriel's gaze pierces you. 'Moria is a place of darkness. The Fellowship needs all its strength. What news do you bring of the One Ring?'",
+					"next" : "The Shire"
+				},
+				{
+					"answer" : "The One Ring threatens to consume Middle-earth.",
+					"next" : "Fangorn"
+				}
+			]
+		},
+
+		{
+			"name": "Fangorn",
+			"isfinal" : false,
+			"banner": "Treebeard, the oldest Ent rustles you:",
+			"question": "Who are you, and why do you disturb the peace of Fangorn?",
+			"answers": [
+				{ 
+					"answer" : "Galadriel offers her wisdom and support.",
+					"next" : "Lothlorien" 
+				},
+				{
+					"answer" : "We need allies in the fight against Sauron.",
+					"next" : "Rohan"
+				},
+				{
+					"answer" : "Mordor - Sauron's forces amass for war!",
+					"message" : "Treebeard’s voice booms. 'Mordor! A blight upon Middle-earth! What can mere mortals do against such darkness?' He raises a creaking arm. 'Seek aid elsewhere.",
+					"next" : "Rivendell"
+				}
+			]
+		},
+
+		{
+			"name": "Rohan",
+			"isfinal" : false,
+			"banner": "Old and tired King Théoden asks yo:",
+			"question": "Welcome to Rohan, traveler. What news do you bring from the wider world?",
+			"answers": [
+				{ 
+					"answer" : "Treebeard watches over the land.",
+					"next" : "Fangorn" 
+				},
+				{
+					"answer" : "We need to unite the free peoples of Middle-earth",
+					"next" : "Gondor"
+				},
+				{
+					"answer" : "A warm meal and a good night's rest are most welcome.",
+					"next" : "Lothlorien"
+				},
+				{
+					"answer" : "Mordor - Sauron prepares for war!",
+					"message" : "Théoden slams his fist on the table. 'Mordor! We have enough troubles of our own with Saruman's treachery. The Fellowship must find another way.",
+					"next" : "Gandalf's Last Stand"
+				}
+			]
+		},
+
+		{
+			"name": "Gondor",
+			"isfinal" : false,
+			"banner": "Denethor, the Steward of Gondor looks at you:",
+			"question": "Word of your journey precedes you. What brings the Fellowship to Gondor?",
+			"answers": [
+				{ 
+					"answer" : "Galadriel's light guides our path",
+					"next" : "Mount Doom" 
+				},
+				{
+					"answer" : "King Théoden pledges his support!",
+					"next" : "Rohan"
+				},
+				{
+					"answer" : "The fate of Middle-earth rests on destroying the Ring there.",
+					"message" : "Denethor said: 'No, the ring should be mine!'",
+					"next" : "Lothlorien"
+				},
+				{
+					"answer" : "The One Ring must be destroyed before Sauron conquers all.",
+					"message" : "Denethor's face darkens. 'Mordor is a suicide mission. Speak plainly. What purpose do you have in venturing into that forsaken land?'",
+					"next" : "Rivendell"
+				}
+			]
+		},
+
+		{
+			"name": "Orthank",
+			"isfinal" : true,
+			"banner": "Saruman captured you. You'll never leave his castle!"
+		},
+
+		{
+			"name": "Mordor",
+			"isfinal" : true,
+			"banner": "Sauron finds the Ring. The end of Middle Earth has come!"
+		},
+
+		{
+			"name": "Win",
+			"isfinal" : true,
+			"banner": "You won! The Ring was destroyed and the Middle Earth was saved!"
+		},
+
+		{
+			"name": "Mount Doom",
+			"isfinal" : false,
+			"banner": "Gollum, a wretched creature sees you:",
+			"question": "Baggins! You have isfinally come! But the Precious will never be yours!",
+			"answers": [
+				{ 
+					"answer" : "The One Ring must be destroyed in the fires of Mount Doom!",
+					"next" : "Win" 
+				},
+				{
+					"answer" : "No, it's MY PRECIOUS now!",
+					"next" : "Mordor"
+				}
+			]
+		}
+	]
+}
