@@ -6,7 +6,7 @@ import org.yt.jr.quest.model.Answer;
 import org.yt.jr.quest.model.Game;
 import org.yt.jr.quest.model.Node;
 
-import java.time.LocalTime;
+import java.time.LocalDateTime;
 import java.util.Optional;
 import java.util.UUID;
 
@@ -14,7 +14,7 @@ import java.util.UUID;
 public class GameInstance {
 
     final private UUID id = UUID.randomUUID();
-    final private LocalTime timestamp = LocalTime.now();
+    final private LocalDateTime timestamp = LocalDateTime.now();
 
     final private String player;
     final private Game game;
