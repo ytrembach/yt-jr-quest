@@ -7,9 +7,9 @@ import org.yt.jr.quest.model.Answer;
 import org.yt.jr.quest.model.Game;
 import org.yt.jr.quest.model.Node;
 import org.yt.jr.quest.model.Question;
-import org.yt.jr.quest.model.gson.AnswerData;
-import org.yt.jr.quest.model.gson.GameData;
-import org.yt.jr.quest.model.gson.NodeData;
+import org.yt.jr.quest.model.beans.AnswerData;
+import org.yt.jr.quest.model.beans.GameData;
+import org.yt.jr.quest.model.beans.NodeData;
 
 import java.io.InputStreamReader;
 
