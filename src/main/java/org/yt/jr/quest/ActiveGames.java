@@ -21,10 +21,6 @@ public class ActiveGames {
         activeGamesList.add(newGameInstance);
     }
 
-    public void finishGame(final GameInstance gameInstance) {
-        activeGamesList.remove(gameInstance);
-    }
-
     public Optional<GameInstance> findGame(final String player) {
         return activeGamesList.stream()
                 .filter(g -> g.getPlayer().equals(player))

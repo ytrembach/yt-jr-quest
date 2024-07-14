@@ -59,15 +59,13 @@ public class ActiveGamesTest {
         final String foundPlayer = prepared.get(0).player;
         final LocalDateTime foundTimestamp = prepared.stream()
                 .filter(preparedGame -> preparedGame.player.equals(foundPlayer))
-                .max((Comparator.comparing(PreparedGame::timestamp))).get().timestamp();
+                .max((Comparator.comparing(PreparedGame::timestamp))).orElseThrow().timestamp();
         Assertions.assertFalse(tested.findGame(foundPlayer).isEmpty());
         Assertions.assertEquals(foundTimestamp, tested.findGame(foundPlayer).get().getTimestamp());
     }
 
     @Test
     void purgeTest() {
-        final LocalDateTime maxTimestamp;
-
         prepareActiveGames(MAX_GAME_INSTANCE_AGE);
         tested.purgeActiveGamesList(ActiveGames.GAME_INSTANCE_IDLE_TIME);
         final Optional<GameInstance> lastGame = tested.getActiveGamesList().stream()

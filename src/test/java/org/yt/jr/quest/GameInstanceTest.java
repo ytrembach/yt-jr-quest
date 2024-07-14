@@ -49,7 +49,7 @@ public class GameInstanceTest {
     @Test
     void changeNodeTheSame() {
         Mockito.when(currentNode.getId()).thenReturn(currentNodeId);
-        Assertions.assertEquals(currentNode, tested.changeNode(currentNodeId.toString()).get());
+        Assertions.assertEquals(currentNode, tested.changeNode(currentNodeId.toString()).orElseThrow());
     }
 
     @Test
@@ -72,7 +72,7 @@ public class GameInstanceTest {
         Node newNode = moveConfigure();
         Mockito.when(currentNodeQuestion.getAnswers()).thenReturn(List.of(currentAnswer));
         Mockito.when(currentAnswer.getNextNode()).thenReturn(newNode);
-        Assertions.assertEquals(newNode, tested.changeNode(newNode.getId().toString()).get());
+        Assertions.assertEquals(newNode, tested.changeNode(newNode.getId().toString()).orElseThrow());
     }
 
     private Node moveConfigure() {
