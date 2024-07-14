@@ -18,9 +18,9 @@ import org.yt.jr.quest.KnownGames;
 @WebServlet(urlPatterns = { "/", "/main" })
 public class QuestServlet extends HttpServlet {
     public final static String URL = "/quest/main";
-    private final static String LOGIN_JSP = "/quest/login.jsp";
-    private final static String SELECT_GAME_JSP = "/select-game.jsp";
-    private final static String NODE_JSP = "/node.jsp";
+    public final static String LOGIN_JSP = "/quest/login.jsp";
+    public final static String SELECT_GAME_JSP = "/select-game.jsp";
+    public final static String NODE_JSP = "/node.jsp";
 
     @SneakyThrows
     @Override
@@ -42,6 +42,7 @@ public class QuestServlet extends HttpServlet {
             final String enteredPlayer = req.getParameter("player");
             if (!isValidPlayer(enteredPlayer)) {
                 req.getRequestDispatcher(LOGIN_JSP).forward(req, resp);
+                return;
             }
             player = enteredPlayer;
             session.setAttribute("player", player);
@@ -50,7 +51,9 @@ public class QuestServlet extends HttpServlet {
         if (ActiveGames.ACTIVE_GAMES.findGame(player).isEmpty()) {
             final String enteredGame = req.getParameter("game");
             if (isValidGame(enteredGame)) {
-                ActiveGames.ACTIVE_GAMES.addGame(player, KnownGames.getInstance().getGame(enteredGame).orElseThrow());
+                ActiveGames.ACTIVE_GAMES.addGameInstance(
+                        new GameInstance(player,
+                                KnownGames.getInstance().getGame(enteredGame).orElseThrow()));
                 resp.sendRedirect(URL);
             } else {
                 req.getRequestDispatcher(SELECT_GAME_JSP).forward(req, resp);
@@ -89,7 +92,7 @@ public class QuestServlet extends HttpServlet {
 
         final String nextNode = req.getParameter("node");
         if (nextNode != null) {
-            gameInstance.get().changeNode(nextNode);
+            gameInstance.orElseThrow().changeNode(nextNode);
         }
         req.getRequestDispatcher(NODE_JSP).forward(req, resp);
     }
