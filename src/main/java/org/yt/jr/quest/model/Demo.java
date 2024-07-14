@@ -3,9 +3,9 @@ package org.yt.jr.quest.model;
 import lombok.Getter;
 
 public class Demo {
-    private final String DEMO_NAME = "Test quest";
-    private final String DEMO_INTRO = "Test quest introduction";
-    private final int DEMO_MAX_NODES = 10;
+    public final static String DEMO_NAME = "Test quest";
+    private final static String DEMO_INTRO = "Test quest introduction";
+    private final static int DEMO_MAX_NODES = 10;
 
     @Getter
     private final Game demo = generateDefaultGame();
