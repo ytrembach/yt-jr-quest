@@ -1,10 +1,10 @@
 package org.yt.jr.quest;
 
 import lombok.Getter;
-import org.yt.jr.quest.model.Game;
 
-import java.time.LocalTime;
+import java.time.LocalDateTime;
 import java.util.ArrayList;
+import java.util.Comparator;
 import java.util.List;
 import java.util.Optional;
 import java.util.stream.Collectors;
@@ -17,8 +17,8 @@ public class ActiveGames {
 
     private List<GameInstance> activeGamesList = new ArrayList<>();
 
-    public void addGame(final String player, final Game game) {
-        activeGamesList.add(new GameInstance(player, game));
+    public void addGameInstance(final GameInstance newGameInstance) {
+        activeGamesList.add(newGameInstance);
     }
 
     public void finishGame(final GameInstance gameInstance) {
@@ -28,18 +28,14 @@ public class ActiveGames {
     public Optional<GameInstance> findGame(final String player) {
         return activeGamesList.stream()
                 .filter(g -> g.getPlayer().equals(player))
-                .sorted((a, b) -> b.getTimestamp().compareTo(a.getTimestamp())) // reverse order
-                .findFirst();
+                .max(Comparator.comparing(GameInstance::getTimestamp));
     }
 
     public void purgeActiveGamesList(final long minutes) {
-        final LocalTime now = LocalTime.now();
-        if (!activeGamesList.isEmpty() &&
-                activeGamesList.get(0)
-                        .getTimestamp()
-                        .isBefore(now.minusMinutes(minutes))) {
+        final LocalDateTime now = LocalDateTime.now();
+        if (!activeGamesList.isEmpty()) {
             activeGamesList = activeGamesList.stream()
-                    .filter(g -> g.getTimestamp().isBefore(now.minusMinutes(minutes)))
+                    .filter(g -> g.getTimestamp().isAfter(now.minusMinutes(minutes)))
                     .collect(Collectors.toCollection(ArrayList::new));
         }
     }
