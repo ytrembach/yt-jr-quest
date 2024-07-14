@@ -1,1 +1,5 @@
-# Module 3 final project - minimalistic textual game
+# Java University Module 3 final project: minimalistic textual game with code tests
+
+# Used tech: Java Servlets, JSP, Gson, JUnit, Mockito
+
+Contains auto-generated game scenario as demo + example scenario as a json-file in resources
